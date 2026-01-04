@@ -1,7 +1,7 @@
 <!-- <script src="{{ "/js/math-code.js" | relURL }}"></script> -->
 {{ $script := resources.Get "latex-fix.js" | resources.Minify }}
-{{ with $script.Content }}
-<script>{ { . | safeJS } }</script>
+{{ with $script }}
+<script>{ { .Content | safeJS } }</script>
 {{ end }}
 
 <link rel="stylesheet" href="{{ .Site.Params.KaTeXCDN }}/katex@{{ .Site.Params.KaTeXVersion }}/dist/katex.min.css"
