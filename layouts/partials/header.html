@@ -13,4 +13,8 @@
 <link rel="apple-touch-icon" href="{{ .Site.Params.touchicon | absURL }}" />
 {{ end }}
 {{ partial "header-includes.html" . }}
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+</script>
 </head>
