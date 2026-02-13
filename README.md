@@ -7,6 +7,7 @@
 - 数学公式（MathJax，支持 `$...$` 与 `$$...$$`）
 - Mermaid 图表（代码块 ` ```mermaid ` 或 shortcode）
 - Dark Mode（Catppuccin Latte ↔ Mocha，自动跟随系统 + 手动切换并持久化）
+- 更强的 TUI 视觉元素（终端窗口控制点、命令行状态栏、列表提示符）
 - Tufte 风格侧边注释 shortcode（`sidenote`）
 - Vim 快捷键（`j/k` 小步滚动，`d/u` 半页，`gg/G` 到顶部/底部）
 
