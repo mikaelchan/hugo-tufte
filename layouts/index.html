@@ -1,0 +1,15 @@
+{{ define "main" }}
+<section>
+  {{ with site.Params.description }}<p class="lede">{{ . }}</p>{{ end }}
+  {{ with site.RegularPages }}
+  <ul class="post-list">
+    {{ range . }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <span class="meta">{{ .Date.Format "2006-01-02" }}</span>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</section>
+{{ end }}
