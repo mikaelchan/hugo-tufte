@@ -1,6 +1,29 @@
 {{ define "main" }}
 <section>
   <h1>{{ .Title }}</h1>
+
+  {{ if and (eq .Kind "taxonomyTerm") (eq .Type "categories") }}
+  <ul class="timeline">
+    {{ range .Data.Terms.Alphabetical }}
+    <li class="timeline-item">
+      <span class="timeline-dot" aria-hidden="true"></span>
+      <div class="timeline-body">
+        <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+        <span class="meta">{{ .Count }} 篇</span>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+
+  {{ else if and (eq .Kind "taxonomyTerm") (eq .Type "tags") }}
+  <div class="tag-cloud">
+    {{ range .Data.Terms.Alphabetical }}
+    {{ $class := cond (ge .Count 10) "tag-lg" (cond (ge .Count 5) "tag-md" "tag-sm") }}
+    <a href="{{ .Page.RelPermalink }}" class="tag-cloud-item {{ $class }}">{{ .Page.Title }}<span class="tag-count">{{ .Count }}</span></a>
+    {{ end }}
+  </div>
+
+  {{ else }}
   <ul class="post-list">
     {{ range .Pages }}
     <li>
@@ -9,5 +32,6 @@
     </li>
     {{ end }}
   </ul>
+  {{ end }}
 </section>
 {{ end }}

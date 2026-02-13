@@ -7,7 +7,7 @@
   --accent: #1e66f5;
   --border: #bcc0cc;
   --code-bg: #e6e9ef;
-  --max-width: 72ch;
+  --max-width: 1100px;
 }
 
 :root[data-theme="dark"] {
@@ -41,7 +41,7 @@ body {
 .site-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
   padding: 1.5rem 0 0.5rem;
   border-bottom: 1px solid var(--border);
 }
@@ -51,6 +51,21 @@ body {
   text-decoration: none;
   color: var(--accent);
   font-weight: 700;
+}
+
+.site-nav {
+  display: flex;
+  gap: 0.8rem;
+  margin-left: auto;
+}
+
+.site-nav a {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.15rem 0.7rem;
+  font-size: 0.9rem;
 }
 
 .theme-toggle {
@@ -103,6 +118,14 @@ blockquote {
   color: var(--muted);
 }
 
+img,
+video,
+iframe,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
 .post-list {
   list-style: none;
   padding-left: 0;
@@ -114,6 +137,60 @@ blockquote {
   border-bottom: 1px dashed var(--border);
   padding: 0.55rem 0;
   gap: 1rem;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding-left: 0.8rem;
+  border-left: 2px solid var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0.2rem 0 0.9rem 0.9rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -0.43rem;
+  top: 0.6rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.timeline-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.tag-cloud-item {
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  line-height: 1.2;
+}
+
+.tag-cloud-item.tag-sm { font-size: 0.9rem; }
+.tag-cloud-item.tag-md { font-size: 1.08rem; }
+.tag-cloud-item.tag-lg { font-size: 1.25rem; }
+
+.tag-count {
+  margin-left: 0.35rem;
+  color: var(--muted);
+  font-size: 0.82em;
 }
 
 .mermaid {
@@ -129,7 +206,7 @@ blockquote {
 
 .sidenote-number {
   color: var(--accent);
-  font-size: 0.85em;
+  font-size: 0.72em;
   vertical-align: super;
   cursor: pointer;
   margin-left: 0.15em;
@@ -154,7 +231,7 @@ blockquote {
   margin-right: -48%;
   margin-top: 0.35rem;
   margin-bottom: 0.6rem;
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   line-height: 1.45;
   color: var(--muted);
   border-left: 2px solid var(--border);
@@ -165,9 +242,29 @@ blockquote {
   margin: 0;
 }
 
+@media (max-width: 900px) {
+  :root { --max-width: 92vw; }
+
+  .site-header {
+    flex-wrap: wrap;
+  }
+
+  .site-nav {
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
 @media (max-width: 720px) {
   body { padding: 0 0.9rem; }
   p, li { font-size: 1rem; }
+
+  .timeline-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+  }
 
   .sidenote {
     display: none;
