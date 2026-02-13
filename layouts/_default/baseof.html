@@ -6,6 +6,10 @@
 <body>
   <header class="site-header">
     <a class="site-title" href="{{ "/" | relLangURL }}">{{ site.Title }}</a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="{{ "categories/" | relLangURL }}">分类</a>
+      <a href="{{ "tags/" | relLangURL }}">标签</a>
+    </nav>
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">◐</button>
   </header>
 

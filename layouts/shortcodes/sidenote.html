@@ -1,5 +1,6 @@
+{{- $index := add .Ordinal 1 -}}
 {{- $id := .Get "id" | default (printf "sn-%d" .Ordinal) -}}
-{{- $label := .Get "label" | default "注" -}}
+{{- $label := .Get "label" | default (printf "%d" $index) -}}
 {{- $content := .Inner | markdownify -}}
 
 <span class="sidenote-wrapper">
