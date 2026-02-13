@@ -1,0 +1,8 @@
+baseURL = 'http://localhost:1313/'
+languageCode = 'zh-cn'
+title = 'Terminal Tufte Demo'
+theme = 'hugo-tufte'
+
+[params]
+description = '数学 + Mermaid + 暗黑模式示例'
+footer = 'Demo Footer'
