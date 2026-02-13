@@ -7,6 +7,7 @@
   --accent: #1e66f5;
   --border: #bcc0cc;
   --code-bg: #e6e9ef;
+  --panel-bg: rgba(255,255,255,0.55);
   --max-width: 1100px;
 }
 
@@ -18,23 +19,34 @@
   --accent: #89b4fa;
   --border: #45475a;
   --code-bg: #313244;
+  --panel-bg: rgba(17, 17, 27, 0.6);
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  padding: 0 1.25rem;
+  padding: 1.2rem 1.25rem;
   background: var(--bg);
   color: var(--fg);
   font-family: "ETBembo", "Palatino", "Iowan Old Style", serif;
   line-height: 1.7;
 }
 
+.site-shell {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.35rem 1.2rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.65rem;
+  background: var(--panel-bg);
+  backdrop-filter: blur(2px);
+}
+
 .site-header,
 .site-footer,
 .content {
-  max-width: var(--max-width);
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -66,6 +78,43 @@ body {
   border-radius: 999px;
   padding: 0.15rem 0.7rem;
   font-size: 0.9rem;
+}
+
+
+.window-controls {
+  display: inline-flex;
+  gap: 0.35rem;
+  margin-right: 0.55rem;
+}
+
+.dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+
+.dot-close { background: #e64553; }
+.dot-min { background: #df8e1d; }
+.dot-max { background: #40a02b; }
+
+.shell-status {
+  margin: 0.8rem 0 1rem;
+  padding: 0.35rem 0.6rem;
+  border: 1px dashed var(--border);
+  border-radius: 0.4rem;
+  background: color-mix(in srgb, var(--code-bg) 50%, transparent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.86rem;
+}
+
+.prompt {
+  color: #40a02b;
+}
+
+.path {
+  color: var(--accent);
 }
 
 .theme-toggle {
@@ -137,6 +186,17 @@ svg {
   border-bottom: 1px dashed var(--border);
   padding: 0.55rem 0;
   gap: 1rem;
+}
+
+.post-list li::before {
+  content: ">";
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  margin-right: 0.5rem;
+}
+
+.post-list li > a {
+  margin-right: auto;
 }
 
 .timeline {
@@ -257,7 +317,11 @@ svg {
 }
 
 @media (max-width: 720px) {
-  body { padding: 0 0.9rem; }
+  body { padding: 0.8rem 0.9rem; }
+
+  .site-shell {
+    padding: 0.25rem 0.75rem 0.7rem;
+  }
   p, li { font-size: 1rem; }
 
   .timeline-body {
